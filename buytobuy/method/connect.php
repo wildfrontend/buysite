@@ -1,7 +1,7 @@
 <?php
      $link = array(
                                'host' => "localhost",
-                               'port' => "8889",
+                               'port' => "3306",
                                'account' => "root",
                                'password' => "root",
                                'dbname' => "buysite"
