@@ -10,7 +10,7 @@
         <input type="text" name="password" value=""panel placeholder="輸入密碼">
         <input type="password" name="pwcheck" value=""panel placeholder="再次輸入密碼">
         <input type="text" name="name" value="" placeholder="輸入姓名">
-        <input type="number" name="phone" value="" placeholder="輸入電話">
+        <input type="text" name="phone" value="" onkeyup="value=value.replace(/[^\d]/g,'') "  placeholder="輸入電話">
         <input type="text" name="addr" value="" placeholder="輸入地址">
         <input type="submit" name="" value="註冊">
     </form>
