@@ -46,8 +46,8 @@ else {
 }
 ?>
 </table>
-<hr/> | <a href="index.php">網路商店</a>
-| <a href="shoppingcart.php">檢視購物車內容</a> |
+<hr/> | <a href="../index.php">網路商店</a>
+| <a href="bill.php">結帳</a> |
 </center>
 </body>
 </html>

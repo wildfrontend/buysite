@@ -5,7 +5,7 @@
    $account = $_POST['account'];
    $password = $_POST['password'];
 
-   $select = $connect -> prepare("SELECT mail,password FROM member WHERE mail = :acc AND password = :pw");
+   $select = $connect -> prepare("SELECT * FROM member WHERE mail = :acc AND password = :pw");
    $select -> execute(array(':acc' => $account,':pw' => $password));
 
    $result = $select -> fetch(PDO::FETCH_ASSOC) ;
