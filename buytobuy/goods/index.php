@@ -3,6 +3,7 @@
      date_default_timezone_set("Asia/Taipei");
      require_once "../method/connect.php";
 
+     $success = $_GET['suc'];
      ini_set("display_errors", "On");
      include "../method/wfcart.php";  // 插入購物車的PHP類別檔
      session_start();  // 啟用交談期
@@ -56,6 +57,8 @@
              <td><a href="../">回首頁</a>
            <tr>
             <td><?php echo $msg ?></td> <td><a href="./buygood.php">購物車</a>
+          <tr>
+           <?php echo $success; ?>
          </table>
        </div>
      </div>

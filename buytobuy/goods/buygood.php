@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<?php require_once "../method/bootstrap.html" ?>
 <title>shoppingcart.php</title>
 </head>
-<body bgcolor="#FFCC77" text="blue">
-<center><table border="0">
-<tr bgcolor="#CC99FF">
+<body>
+<center><table border="0" class="table">
+<tr>
    <td>功能</td><td>商品編號</td><td>商品名稱</td>
    <td>訂價</td><td>數量</td><td>小計</td></tr>
 <?php
@@ -21,14 +22,7 @@ $flag = false;
 if($cart->itemcount > 0) { // 檢查購物車是否有商品
    // 顯示購物車的內容
    foreach($cart->get_contents() as $item) {
-	    if ($flag) {   // 切換顯示色彩
-         $flag = false;
-         $color="#FF99CC";
-      } else {
-         $flag = true;
-         $color="#99FFC";
-      }
-	    echo "<tr bgcolor='".$color."'>";
+
 	    echo "<td><a href='delete.php?Id=".$item['id']."'>";
       echo "刪除</a></td>";
       // 顯示選購的商品資料
@@ -38,7 +32,7 @@ if($cart->itemcount > 0) { // 檢查購物車是否有商品
 		  echo "<td>".$item['qty']."</td>";
 		  echo "<td>".number_format($item['subtotal'],2)."</td>";
 	 }
-	 echo "<tr bgcolor=yellow><td colspan='6' align='right'>";
+	 echo "<tr><td colspan='6' align='right'>";
    echo "總金額 = NT$".number_format($cart->total,2)."元</td></tr>";
 }
 else {

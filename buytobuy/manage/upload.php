@@ -31,8 +31,8 @@
          echo"fileErrorCode:".$_FILES["file"]["error"];
      }
 
-      require_once "../method/connect.php";
 
+      require_once "../../method/connect.php";
      $insert = $connect -> prepare( "INSERT INTO
                          goods (
                                  name,

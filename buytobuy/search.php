@@ -49,8 +49,11 @@
            ini_set("display_errors", "On");
            require_once "./method/connect.php";
 
-           $select = $connect -> prepare("SELECT * FROM goods");
-           $select -> execute();
+           $keyword = $_POST['searchGood'];
+
+           $select = $connect -> prepare("SELECT * FROM goods WHERE name LIKE :key");
+           $select -> execute(array(':key' => "%$keyword%"));
+
            foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as $result) {?>
 
              <div class="col-md-4">

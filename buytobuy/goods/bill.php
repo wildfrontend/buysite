@@ -12,7 +12,6 @@
     error_reporting(E_ERROR | E_WARNING);    // 設定報告等級
     include "../method/wfcart.php"; // 插入購物車的PHP類別檔
     session_start();  // 啟用交談期
-    var_dump( $_SESSION['member']);
     $cart =& $_SESSION['wfcart']; // 指向購物車物件
     if(!is_object($cart)) $cart = new wfCart();
 
@@ -37,9 +36,11 @@
                                                                $_SESSION['member']['phone'],
                                                                $_SESSION['member']['addr']));
             }
+
     }else {
            echo "目前購物車沒有選購商品!";
    }
+   header("Location: index.php?suc=購買成功");
  ?>
   </body>
 </html>
