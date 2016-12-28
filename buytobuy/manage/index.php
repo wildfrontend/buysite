@@ -16,8 +16,9 @@
             <div class="panel-heading">功能選單</div>
             <div class="panel-body">
               <ul class="nav nav-sidebar">
-                <li><a href="./odder/">訂單管理</a></li>
+                <li><a href="./order/">訂單管理</a></li>
                 <li><a href="./gdlist/">商品管理</a></li>
+                <li><a href="./member/">會員管理</a></li>
                 <li><a href="index.php">商品上傳</a></li>
                 <li><a href="../index.php">首頁</a></li>
               </ul>

@@ -36,5 +36,5 @@
    $update = $connect -> prepare("UPDATE goods SET name = ?,picture = ?,price = ?,content = ?, uptime = ? WHERE id = ?");
    $update -> execute(array($name,$filelink,$price,$content,$uptime,$id));
 
-   header("location:".$_SERVER["HTTP_REFERER"]);
+   header("location:./");
 ?>

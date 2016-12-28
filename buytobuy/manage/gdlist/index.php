@@ -6,6 +6,9 @@
     <title>訂單管理</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <img src="http://i.imgur.com/lyIDL5K.jpg" alt="" style="width:auto">
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-md-2 sidebar">

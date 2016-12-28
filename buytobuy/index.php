@@ -23,7 +23,10 @@
                     if ($_SESSION['member']['mail']=='leo5916267@gmail.com') {?>
                           <li><a href="./manage" class="thumbnail">管理員介面</a></li>
                   <?  }
-                 ?>
+                  if ($_SESSION['member'] != NULL) {?>
+                    <li><a href="./user?id=<?echo $_SESSION['member']['id']?>" class="thumbnail">會員頁面</a>
+                  <?  }
+                ?>
               </ul>
             </div>
           </div>
