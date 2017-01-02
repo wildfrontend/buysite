@@ -13,9 +13,11 @@
       <div class="row">
         <div class="col-md-2 sidebar">
            <ul class="nav nav-sidebar">
-             <li><a href="../odder/">訂單管理</a></li>
+             <li><a href="../order/">訂單管理</a></li>
              <li><a href="./">商品管理</a></li>
              <li><a href="../index.php">商品上傳</a></li>
+             <li><a href="../member/">會員管理</a></li>
+             <li><a href="../board.php">顧客意見</a></li>
               <li><a href="../index.php">首頁</a></li>
            </ul>
         </div>
@@ -36,7 +38,7 @@
                        <tr>
                          <td><?echo $result['id'];?>
                          <td><?echo $result['name'];?>
-                         <td><?echo $result['picture'];?>
+                         <td><img src=" <?echo $result['picture'];?>" alt="" width="100px" height="100px">
                          <td><?echo $result['price'];?>
                          <td><?echo $result['content'];?>
                          <td><?echo $result['pop'];?>

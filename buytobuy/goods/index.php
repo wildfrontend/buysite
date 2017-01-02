@@ -3,7 +3,6 @@
      date_default_timezone_set("Asia/Taipei");
      require_once "../method/connect.php";
 
-     $success = $_GET['suc'];
      ini_set("display_errors", "On");
      include "../method/wfcart.php";  // 插入購物車的PHP類別檔
      session_start();  // 啟用交談期
@@ -40,34 +39,46 @@
    <body>
      <div class="container">
        <div class="row">
-         <div class="panel panel-default">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h2><?php echo $result['name']; ?></h2>
+           </div>
            <div class="panel-body">
-             <table border="1" class="table">
-               <tr><td>名稱<td><?php echo $result['name']; ?>
-               <tr> <img src=<?php echo $result['picture']; ?> alt="" height="150" width="150">
-               <tr><td>價錢<td><?php echo $result['price']; ?>
-               <tr><td>內容<td><?php echo $result['content']; ?>
-               <tr><td>人氣<td><?php echo $result['pop']; ?>
-               <tr><td>上架日期<td><?php echo $result['uptime']; ?>
-               <tr><td>數量<td><form class="" action="index.php?id=<?echo $result['id']?>" method="post">
-                 <input type="number" size = "5" name="num" value="1">
-                 <input type="hidden" name="name" value="<?echo$result['name']?>">
-                 <input type="hidden" name="price" value="<?echo$result['price']?>">
-                 <input type="hidden" name="id" value="<?echo$result['id']?>">
-               <tr>
-                 <?php if ($_SESSION['member']!=NULL) {?>
-                      <td><input type="submit" name="Order" value="購買">
-                 <?}else {?>
-                     <td><?php echo '購買前請先登入' ?>
-                 <?} ?>
+             <div class="row">
+               <div class="thumbnail col-md-6">
+                 <img src=<?php echo $result['picture']; ?> alt="" style="float:left">
+               </div>
+               <div class="col-md-6">
+                 <ul class="list-group">
+                   <li class="list-group-item">商品描述:<?php echo $result['content']; ?></li>
+                   <li class="list-group-item">價格:<?php echo $result['price']; ?>元</li>
+                   <li class="list-group-item">人氣:<?php echo $result['pop']; ?></li>
+                   <li class="list-group-item">上架日期:<?php echo $result['uptime']; ?></li>
+                   <li class="list-group-item">數量:
+                     <form class="" action="index.php?id=<?echo $result['id']?>" method="post">
+                       <input type="number" size = "5" name="num" value="1">
+                       <input type="hidden" name="name" value="<?echo$result['name']?>">
+                       <input type="hidden" name="price" value="<?echo$result['price']?>">
+                       <input type="hidden" name="id" value="<?echo$result['id']?>">
+                       <?php if ($_SESSION['member']!=NULL) {?>
+                            <td><input type="submit" name="Order" value="購買" class="btn-primary">
+                       <?}else {?>
+                           <td><?php echo '購買前請先登入' ?>
+                       <?} ?>
+                      </form>
+                   </li>
+                   <li class="list-group-item">
+                                  <a href="../">回首頁</a>
+                                   <?php echo $msg ?>
+                                   <a href="./buygood.php">購物車</a>
+                 </ul>
+               </div>
+             </div>
 
-                </form>
-                 <td><a href="../">回首頁</a>
-               <tr>
-                <td><?php echo $msg ?></td> <td><a href="./buygood.php">購物車</a>
-              <tr>
-               <?php echo $success; ?>
-             </table>
+
+          </div>
+            </div>
+          </div>
            </div>
          </div>
        </div>

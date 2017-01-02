@@ -8,8 +8,7 @@
 <body>
 <center><table border="0" class="table">
 <tr>
-   <td>功能</td><td>商品編號</td><td>商品名稱</td>
-   <td>訂價</td><td>數量</td><td>小計</td></tr>
+   <td>功能<td>商品編號<td>商品名稱<td>訂價<td>數量<td>小計
 <?php
    ini_set("display_errors", "On");
 // 設定報告等級
@@ -21,8 +20,8 @@ if(!is_object($cart)) $cart = new wfCart();
 $flag = false;
 if($cart->itemcount > 0) { // 檢查購物車是否有商品
    // 顯示購物車的內容
-   foreach($cart->get_contents() as $item) {
-
+   foreach($cart->get_contents() as $item) {?>
+</tr><?
 	    echo "<td><a href='delete.php?Id=".$item['id']."'>";
       echo "刪除</a></td>";
       // 顯示選購的商品資料

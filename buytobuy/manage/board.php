@@ -30,15 +30,22 @@
           <div class="panel panel-default">
             <div class="panel-heading">商品上傳</div>
             <div class="panel-body">
-              <form class="" action="./upload.php" method="post"enctype="multipart/form-data">
-                 <table>
-                   <tr><td>商品名稱:<td><input type="text" name="gdname" value="">
-                   <tr><td>商品圖片:<td><input type="file" name="gdpic" value="">
-                   <tr><td>商品敘述:<td><textarea name="gdcontent" rows="8" cols="80"></textarea>
-                   <tr><td>商品價格:<td><input type="number" name="gdprice" value="">
-                   <tr><td colspan="2"><input type="submit" name="" value="送出">
-                 </table>
-              </form>
+              <?php
+                 ini_set("display_errors", "On");
+                 require_once "../method/connect.php";
+
+                 $select = $connect -> prepare("SELECT * FROM board");
+                 $select -> execute();
+
+                 foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as $result) {?>
+                         <table class="table">
+                           <tr>
+                             <td>編號<td>留言<td>顧客<td>日期
+                          <tr>
+                               <td><?echo $result['id'];?><td><?echo $result['message'];?><td><?echo $result['mail'];?><td><?echo $result['date'];?>
+                         </table>
+                <? }
+               ?>
             </div>
         </div>
       </div>

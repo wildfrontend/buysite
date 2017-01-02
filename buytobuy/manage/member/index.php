@@ -13,10 +13,11 @@
       <div class="row">
         <div class="col-md-2 sidebar">
            <ul class="nav nav-sidebar">
-             <li><a href="./order/">訂單管理</a></li>
+             <li><a href="../order/">訂單管理</a></li>
              <li><a href="../gdlist/">商品管理</a></li>
              <li><a href="../index.php">商品上傳</a></li>
              <li><a href="../member/">會員管理</a></li>
+             <li><a href="../board.php">顧客意見</a></li>
               <li><a href="../../index.php">首頁</a></li>
 
            </ul>

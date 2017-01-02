@@ -16,6 +16,7 @@
              <li><a href="./">訂單管理</a></li>
              <li><a href="../gdlist/">商品管理</a></li>
              <li><a href="../index.php">商品上傳</a></li>
+             <li><a href="../board.php">顧客意見</a></li>
               <li><a href="../index.php">首頁</a></li>
            </ul>
         </div>
@@ -25,7 +26,7 @@
                ini_set("display_errors", "On");
                require_once "../../method/connect.php";
 
-               $select = $connect -> prepare("SELECT ordertab.id,ordertab.member_id,orderdetail.goods_id,orderdetail.goods_amount,ordertab.total,order_date,drive
+               $select = $connect -> prepare("SELECT ordertab.id,ordertab.member_id,orderdetail.goods_id,orderdetail.goods_amount,orderdetail.goods_total,order_date,drive
                  FROM ordertab,member,orderdetail
                  WHERE  ordertab.member_id = member.id
                  AND ordertab.id = orderdetail.id");
@@ -38,10 +39,10 @@
               <?foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as $result) { ?>
                        <tr>
                          <td><?echo $result['id'];?>
-                         <td><?echo $result['member_id'];?>
-                         <td><?echo $result['goods_id'];?>
+                         <td><a href="./mb_detail.php?id=<?echo $result['member_id'];?>" target="_blank"><?echo $result['member_id'];?></a>
+                              <td><a target="_blank" href="./gd_detail.php?id=<?echo $result['goods_id'];?>" ><?echo $result['goods_id'];?></a>
                          <td><?echo $result['goods_amount'];?>
-                         <td><?echo $result['total'];?>
+                         <td><?echo $result['goods_total'];?>
                          <td><?echo $result['order_date'];?>
                          <td><?if ($result['drive']==0) {
                               echo "未出貨";

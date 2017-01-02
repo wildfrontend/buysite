@@ -18,39 +18,33 @@
 
     if($cart->itemcount > 0) { // 檢查購物車是否有商品
         // 顯示購物車的內容
-        foreach($cart->get_contents() as $item) {
+        $insert = $connect -> prepare("INSERT INTO ordertab (
+                                                                     member_id,
+                                                                     order_date,
+                                                                     total
+                                                                     ) VALUES(
+                                                                       ?,?,?
+                                                                     )");
+         $insert -> execute(array(
+                                                           $_SESSION['member']['id'],
+                                                           $order_date,
+                                                           $cart->total
+                                                      ));
 
-              $insert = $connect -> prepare("INSERT INTO ordertab (
-                                                                           member_id,
-                                                                           order_date,
-                                                                           total
-                                                                           ) VALUES(
-                                                                             ?,?,?
-                                                                           )");
-               $insert -> execute(array(
-                                                                 $_SESSION['member']['id'],
-                                                                 $order_date,
-                                                                 number_format($cart->total,2)
-                                                            ));
-              $select = $connect -> prepare("SELECT id FROM ordertab WHERE member_id = :mbid");
+         $select = $connect -> prepare("SELECT id FROM ordertab WHERE member_id = :mbid");
+         $select -> execute(array(':mbid' => $_SESSION['member']['id'] ));
+         $result = $select-> fetch(PDO::FETCH_ASSOC);
 
-              $select -> execute(array(':mbid' => $_SESSION['member']['id'] ));
-              $result = $select-> fetch(PDO::FETCH_ASSOC);
-
-              $insert = $connect -> prepare("INSERT INTO orderdetail (
-                                                             id,
-                                                             goods_id,
-                                                             goods_amount,
-                                                             goods_total
-                                                            ) VALUES(
-                                                                    ?,?,?,?
-                                                           )");
-             $insert -> execute(array($result['id'],$item['id'],$item['qty'],number_format($item['subtotal'],2)));
-            }
-
+         foreach ($cart->get_contents() as $item) {
+         $insert =  $connect -> prepare("INSERT INTO orderdetail(id,goods_id,goods_amount,goods_total)
+                                      VALUES(?,?,?,?);
+                                 ");
+          $insert -> execute(array( $result['id'],$item['id'],$item['qty'],$item[subtotal]));
+         }
     }else {
            echo "目前購物車沒有選購商品!";
    }
+   unset($_SESSION["wfcart"]);
    header("Location: index.php?suc=購買成功");
  ?>
   </body>
